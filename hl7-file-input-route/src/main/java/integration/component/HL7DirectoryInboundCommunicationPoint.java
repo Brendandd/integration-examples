@@ -15,19 +15,17 @@ import integration.messaging.hl7.component.communicationpoint.directory.BaseHL7I
  */
 @Component
 public class HL7DirectoryInboundCommunicationPoint extends BaseHL7InboundDirectoryCommunicationPoint {
-	
-	@Autowired
-	@Qualifier("forwardAllMessages")
-	private MessageForwardingPolicy messageForwardingPolicy;
 
-	public HL7DirectoryInboundCommunicationPoint() {
-		super("directory-inbound");
-	}
+    @Autowired
+    @Qualifier("forwardAllMessages")
+    private MessageForwardingPolicy messageForwardingPolicy;
 
-	@Override
-	public MessageForwardingPolicy getMessageForwardingPolicy() {
-		return messageForwardingPolicy;
-	}
+    public HL7DirectoryInboundCommunicationPoint() {
+        super("directory-inbound");
+    }
+
+    @Override
+    public MessageForwardingPolicy getMessageForwardingPolicy() {
+        return messageForwardingPolicy;
+    }
 }
-
-

@@ -10,37 +10,36 @@ import integration.messaging.component.communicationpoint.BaseRouteOutboundConne
 import integration.messaging.component.processingstep.filter.MessageAcceptancePolicy;
 
 /**
- * An outbound route connector.  Connects this route to another route.
+ * An outbound route connector. Connects this route to another route.
  * 
  * @author Brendan Douglas
  */
 @Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ToDirectoryOutboundRouteConnector extends BaseRouteOutboundConnector {
-	
-	@Autowired
-	@Qualifier("acceptAllMessages")
-	private MessageAcceptancePolicy messageAcceptancePolicy;
-	
-	private static final String COMPONENT_NAME = "to-directory-outbound-route-connector";
 
-	public ToDirectoryOutboundRouteConnector() throws Exception {
-		super(COMPONENT_NAME);
-	}
+    @Autowired
+    @Qualifier("acceptAllMessages")
+    private MessageAcceptancePolicy messageAcceptancePolicy;
 
-	@Override
-	public String getContentType() {
-		return "HL7";
-	}
+    private static final String COMPONENT_NAME = "to-directory-outbound-route-connector";
 
-	@Override
-	public String getName() {
-		return "routeConnector";
-	}
-	
-	
-	@Override
-	public MessageAcceptancePolicy getMessageAcceptancePolicy() {
-		return messageAcceptancePolicy;
-	}
+    public ToDirectoryOutboundRouteConnector() throws Exception {
+        super(COMPONENT_NAME);
+    }
+
+    @Override
+    public String getContentType() {
+        return "HL7";
+    }
+
+    @Override
+    public String getName() {
+        return "routeConnector";
+    }
+
+    @Override
+    public MessageAcceptancePolicy getMessageAcceptancePolicy() {
+        return messageAcceptancePolicy;
+    }
 }

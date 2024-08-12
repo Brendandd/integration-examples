@@ -21,43 +21,43 @@ import integration.messaging.component.processingstep.splitter.MessageSplitter;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class Hl7Splitter extends BaseSplitterProcessingStep {
 
-	@Autowired
-	@Qualifier("forwardAllMessages")
-	private MessageForwardingPolicy messageForwardingPolicy;
+    @Autowired
+    @Qualifier("forwardAllMessages")
+    private MessageForwardingPolicy messageForwardingPolicy;
 
-	@Autowired
-	@Qualifier("acceptAllMessages")
-	private MessageAcceptancePolicy messageAcceptancePolicy;
+    @Autowired
+    @Qualifier("acceptAllMessages")
+    private MessageAcceptancePolicy messageAcceptancePolicy;
 
-	@Autowired
-	@Qualifier("splitOnOXBSegments")
-	private MessageSplitter messageSplitter;
+    @Autowired
+    @Qualifier("splitOnOXBSegments")
+    private MessageSplitter messageSplitter;
 
-	private static final String COMPONENT_NAME = "hl7-splitter";
+    private static final String COMPONENT_NAME = "hl7-splitter";
 
-	public Hl7Splitter() {
-		super(COMPONENT_NAME);
-	}
+    public Hl7Splitter() {
+        super(COMPONENT_NAME);
+    }
 
-	private static final String CONTENT_TYPE = "HL7";
+    private static final String CONTENT_TYPE = "HL7";
 
-	@Override
-	public MessageSplitter getSplitter() {
-		return messageSplitter;
-	}
+    @Override
+    public MessageSplitter getSplitter() {
+        return messageSplitter;
+    }
 
-	@Override
-	public String getContentType() {
-		return CONTENT_TYPE;
-	}
+    @Override
+    public String getContentType() {
+        return CONTENT_TYPE;
+    }
 
-	@Override
-	public MessageAcceptancePolicy getMessageAcceptancePolicy() {
-		return messageAcceptancePolicy;
-	}
+    @Override
+    public MessageAcceptancePolicy getMessageAcceptancePolicy() {
+        return messageAcceptancePolicy;
+    }
 
-	@Override
-	public MessageForwardingPolicy getMessageForwardingPolicy() {
-		return messageForwardingPolicy;
-	}
+    @Override
+    public MessageForwardingPolicy getMessageForwardingPolicy() {
+        return messageForwardingPolicy;
+    }
 }

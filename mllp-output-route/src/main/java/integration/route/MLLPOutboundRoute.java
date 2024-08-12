@@ -22,52 +22,52 @@ import jakarta.annotation.PostConstruct;
  */
 @Component
 public class MLLPOutboundRoute extends BaseRoute {
-	private static final String ROUTE_NAME = "mllp-outbound";
+    private static final String ROUTE_NAME = "mllp-outbound";
 
-	@Autowired
-	private FromMLLPInboundRouteConnector fromMllpInboundRouteConnector;
+    @Autowired
+    private FromMLLPInboundRouteConnector fromMllpInboundRouteConnector;
 
-	@Autowired
-	private FromDirectoryInboundRouteConnector fromDirectoryInboundRouteConnector;
+    @Autowired
+    private FromDirectoryInboundRouteConnector fromDirectoryInboundRouteConnector;
 
-	@Autowired
-	private Hl7Splitter splitter;
+    @Autowired
+    private Hl7Splitter splitter;
 
-	@Autowired
-	private Hl7Transformation transformation;
+    @Autowired
+    private Hl7Transformation transformation;
 
-	@Autowired
-	private Hl7MessageTypeFilter filter;
+    @Autowired
+    private Hl7MessageTypeFilter filter;
 
-	@Autowired
-	private MllpOutboundCommunicationPoint outboundCommunicationPoint;
+    @Autowired
+    private MllpOutboundCommunicationPoint outboundCommunicationPoint;
 
-	public MLLPOutboundRoute() {
-		super(ROUTE_NAME);
-	}
+    public MLLPOutboundRoute() {
+        super(ROUTE_NAME);
+    }
 
-	// TODO accepts ACK from destination system.
+    // TODO accepts ACK from destination system.
 
-	@Override
-	@PostConstruct
-	public void configure() throws Exception {
+    @Override
+    @PostConstruct
+    public void configure() throws Exception {
 
-		// Associate components to the this route.
-		addComponentToRoute(fromMllpInboundRouteConnector);
-		addComponentToRoute(fromDirectoryInboundRouteConnector);
-		addComponentToRoute(splitter);
-		addComponentToRoute(transformation);
-		addComponentToRoute(filter);
-		addComponentToRoute(outboundCommunicationPoint);
+        // Associate components to the this route.
+        addComponentToRoute(fromMllpInboundRouteConnector);
+        addComponentToRoute(fromDirectoryInboundRouteConnector);
+        addComponentToRoute(splitter);
+        addComponentToRoute(transformation);
+        addComponentToRoute(filter);
+        addComponentToRoute(outboundCommunicationPoint);
 
-		// Configure how the components are joined together.
-		addFlow(fromMllpInboundRouteConnector, transformation, filter);
-		addFlow(fromDirectoryInboundRouteConnector, outboundCommunicationPoint);
-		addFlow(transformation, splitter);
-		addFlow(filter, splitter);
-		addFlow(splitter, outboundCommunicationPoint);
+        // Configure how the components are joined together.
+        addFlow(fromMllpInboundRouteConnector, transformation, filter);
+        addFlow(fromDirectoryInboundRouteConnector, outboundCommunicationPoint);
+        addFlow(transformation, splitter);
+        addFlow(filter, splitter);
+        addFlow(splitter, outboundCommunicationPoint);
 
-		// Start the route
-		start();
-	}
+        // Start the route
+        start();
+    }
 }

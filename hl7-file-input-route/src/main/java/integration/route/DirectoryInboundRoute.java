@@ -8,7 +8,6 @@ import integration.component.ToDirectoryOutboundRouteConnector;
 import integration.messaging.BaseRoute;
 import jakarta.annotation.PostConstruct;
 
-
 /**
  * A route to accept a HL7 message from a directory.
  * 
@@ -16,31 +15,29 @@ import jakarta.annotation.PostConstruct;
  */
 @Component
 public class DirectoryInboundRoute extends BaseRoute {
-	public static final String ROUTE_NAME = "directory-inbound";
-	
-	@Autowired
-	private HL7DirectoryInboundCommunicationPoint directoryInboundCommunicationPoint;
-	
-	
-	@Autowired
-	private ToDirectoryOutboundRouteConnector toDirectoryOutboundRouteConnector;
-		
-	public DirectoryInboundRoute() {
-		super(ROUTE_NAME);
-	}
-	
-	
-	@Override
-	@PostConstruct
-	public void configure() throws Exception {
-		
-		// Associate components to the this route.
-		addComponentToRoute(directoryInboundCommunicationPoint);
-		addComponentToRoute(toDirectoryOutboundRouteConnector);
-		
-		// Configure how the components are joined together.
-		addFlow(directoryInboundCommunicationPoint, toDirectoryOutboundRouteConnector);		
-		
-		start();
-	}
+    public static final String ROUTE_NAME = "directory-inbound";
+
+    @Autowired
+    private HL7DirectoryInboundCommunicationPoint directoryInboundCommunicationPoint;
+
+    @Autowired
+    private ToDirectoryOutboundRouteConnector toDirectoryOutboundRouteConnector;
+
+    public DirectoryInboundRoute() {
+        super(ROUTE_NAME);
+    }
+
+    @Override
+    @PostConstruct
+    public void configure() throws Exception {
+
+        // Associate components to the this route.
+        addComponentToRoute(directoryInboundCommunicationPoint);
+        addComponentToRoute(toDirectoryOutboundRouteConnector);
+
+        // Configure how the components are joined together.
+        addFlow(directoryInboundCommunicationPoint, toDirectoryOutboundRouteConnector);
+
+        start();
+    }
 }

@@ -17,30 +17,30 @@ import jakarta.annotation.PostConstruct;
  */
 @Component
 public class DirectoryOutboundRoute extends BaseRoute {
-	private static final String ROUTE_NAME = "directory-outbound";
+    private static final String ROUTE_NAME = "directory-outbound";
 
-	@Autowired
-	private FromDirectoryInboundRouteConnector fromDirectoryInboundRouteConnector;
+    @Autowired
+    private FromDirectoryInboundRouteConnector fromDirectoryInboundRouteConnector;
 
-	@Autowired
-	private HL7DirectoryOutboundCommunicationPoint outboundCommunicationPoint;
+    @Autowired
+    private HL7DirectoryOutboundCommunicationPoint outboundCommunicationPoint;
 
-	public DirectoryOutboundRoute() {
-		super(ROUTE_NAME);
-	}
+    public DirectoryOutboundRoute() {
+        super(ROUTE_NAME);
+    }
 
-	@Override
-	@PostConstruct
-	public void configure() throws Exception {
+    @Override
+    @PostConstruct
+    public void configure() throws Exception {
 
-		// Associate components to the this route.
-		addComponentToRoute(fromDirectoryInboundRouteConnector);
-		addComponentToRoute(outboundCommunicationPoint);
+        // Associate components to the this route.
+        addComponentToRoute(fromDirectoryInboundRouteConnector);
+        addComponentToRoute(outboundCommunicationPoint);
 
-		// Configure how the components are joined together.
-		addFlow(fromDirectoryInboundRouteConnector, outboundCommunicationPoint);
+        // Configure how the components are joined together.
+        addFlow(fromDirectoryInboundRouteConnector, outboundCommunicationPoint);
 
-		// Start the route
-		start();
-	}
+        // Start the route
+        start();
+    }
 }

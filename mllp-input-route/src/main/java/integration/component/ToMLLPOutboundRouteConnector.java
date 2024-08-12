@@ -18,28 +18,28 @@ import integration.messaging.component.processingstep.filter.MessageAcceptancePo
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ToMLLPOutboundRouteConnector extends BaseRouteOutboundConnector {
 
-	@Autowired
-	@Qualifier("acceptAllMessages")
-	private MessageAcceptancePolicy messageAcceptancePolicy;
+    @Autowired
+    @Qualifier("acceptAllMessages")
+    private MessageAcceptancePolicy messageAcceptancePolicy;
 
-	private static final String COMPONENT_NAME = "to-MLLP-outbound-route-connector";
+    private static final String COMPONENT_NAME = "to-MLLP-outbound-route-connector";
 
-	public ToMLLPOutboundRouteConnector() throws Exception {
-		super(COMPONENT_NAME);
-	}
+    public ToMLLPOutboundRouteConnector() throws Exception {
+        super(COMPONENT_NAME);
+    }
 
-	@Override
-	public String getContentType() {
-		return "HL7";
-	}
+    @Override
+    public String getContentType() {
+        return "HL7";
+    }
 
-	@Override
-	public String getName() {
-		return "routeConnector";
-	}
+    @Override
+    public String getName() {
+        return "routeConnector";
+    }
 
-	@Override
-	public MessageAcceptancePolicy getMessageAcceptancePolicy() {
-		return messageAcceptancePolicy;
-	}
+    @Override
+    public MessageAcceptancePolicy getMessageAcceptancePolicy() {
+        return messageAcceptancePolicy;
+    }
 }

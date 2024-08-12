@@ -15,8 +15,8 @@ import integration.messaging.hl7.component.processingstep.transformation.ChangeM
 @Component("changeVersionTo2.5")
 public class TransformMessageVersion extends ChangeMessageVersionTransformer {
 
-	@Override
-	public String getNewVersion() throws TransformationException {
-		return "2.5";
-	}
+    @Override
+    public String getNewVersion() throws TransformationException {
+        return "2.5";
+    }
 }

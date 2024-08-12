@@ -13,20 +13,20 @@ import integration.messaging.hl7.datamodel.HL7Message;
 @Component("splitOnOXBSegments")
 public class SplitBasedOnOBX extends BaseHL7MessageSplitter {
 
-	@Override
-	public HL7Message[] split(Exchange exchange, HL7Message hl7Message) throws SplitterException {
-		try {
-			int obxCount = hl7Message.getSegmentCount("OBX");
+    @Override
+    public HL7Message[] split(Exchange exchange, HL7Message hl7Message) throws SplitterException {
+        try {
+            int obxCount = hl7Message.getSegmentCount("OBX");
 
-			HL7Message[] messageFlowArray = new HL7Message[obxCount];
+            HL7Message[] messageFlowArray = new HL7Message[obxCount];
 
-			for (int i = 0; i < obxCount; i++) {
-				messageFlowArray[i] = hl7Message;
-			}
+            for (int i = 0; i < obxCount; i++) {
+                messageFlowArray[i] = hl7Message;
+            }
 
-			return messageFlowArray;
-		} catch (Exception e) {
-			throw new SplitterException("Error splitting the message", e);
-		}
-	}
+            return messageFlowArray;
+        } catch (Exception e) {
+            throw new SplitterException("Error splitting the message", e);
+        }
+    }
 }
