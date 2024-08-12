@@ -18,12 +18,12 @@ import integration.messaging.hl7.component.communicationpoint.mllp.BaseMllpInbou
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class MllpInboundCommunicationPoint extends BaseMllpInboundCommunicationPoint {
 	private static final String COMPONENT_NAME = "mllp-inbound";
-	
+
 	@Autowired
 	@Qualifier("forwardAllMessages")
 	private MessageForwardingPolicy messageForwardingPolicy;
 
-	public MllpInboundCommunicationPoint() throws Exception{
+	public MllpInboundCommunicationPoint() throws Exception {
 		super(COMPONENT_NAME);
 	}
 

@@ -19,28 +19,25 @@ import integration.messaging.component.processingstep.filter.MessageForwardingPo
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class FromMLLPInboundRouteConnector extends BaseRouteInboundConnector {
 	private static final String COMPONENT_NAME = "from-MLLP-inbound-route-connector";
-	
+
 	@Autowired
 	@Qualifier("forwardAllMessages")
 	private MessageForwardingPolicy messageForwardingPolicy;
-	
+
 	public FromMLLPInboundRouteConnector() {
 		super(COMPONENT_NAME);
 	}
 
-	
 	@Override
 	public String getContentType() {
 		return "HL7";
 	}
-	
-	
+
 	@Override
 	public String getName() {
 		return "routeConnector";
 	}
-	
-	
+
 	@Override
 	public MessageForwardingPolicy getMessageForwardingPolicy() {
 		return messageForwardingPolicy;

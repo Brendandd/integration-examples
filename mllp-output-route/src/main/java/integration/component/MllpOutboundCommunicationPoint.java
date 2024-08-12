@@ -13,21 +13,17 @@ import integration.messaging.hl7.component.communicationpoint.mllp.BaseMllpOutbo
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class MllpOutboundCommunicationPoint extends BaseMllpOutboundCommunicationPoint {
 	private static final String COMPONENT_NAME = "mllp-outbound";
-	
+
 	@Autowired
 	@Qualifier("acceptAllMessages")
 	private MessageAcceptancePolicy messageAcceptancePolicy;
-	
-	
+
 	public MllpOutboundCommunicationPoint() {
 		super(COMPONENT_NAME);
 	}
-	
-	
+
 	@Override
 	public MessageAcceptancePolicy getMessageAcceptancePolicy() {
 		return messageAcceptancePolicy;
 	}
 }
-
-

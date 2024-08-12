@@ -10,18 +10,18 @@ import integration.messaging.component.communicationpoint.BaseRouteOutboundConne
 import integration.messaging.component.processingstep.filter.MessageAcceptancePolicy;
 
 /**
- * An outbound route connector.  Connects this route to another route.
+ * An outbound route connector. Connects this route to another route.
  * 
  * @author Brendan Douglas
  */
 @Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ToMLLPOutboundRouteConnector extends BaseRouteOutboundConnector {
-	
+
 	@Autowired
 	@Qualifier("acceptAllMessages")
 	private MessageAcceptancePolicy messageAcceptancePolicy;
-	
+
 	private static final String COMPONENT_NAME = "to-MLLP-outbound-route-connector";
 
 	public ToMLLPOutboundRouteConnector() throws Exception {
@@ -37,8 +37,7 @@ public class ToMLLPOutboundRouteConnector extends BaseRouteOutboundConnector {
 	public String getName() {
 		return "routeConnector";
 	}
-	
-	
+
 	@Override
 	public MessageAcceptancePolicy getMessageAcceptancePolicy() {
 		return messageAcceptancePolicy;

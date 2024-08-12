@@ -8,7 +8,6 @@ import integration.component.ToMLLPOutboundRouteConnector;
 import integration.messaging.BaseRoute;
 import jakarta.annotation.PostConstruct;
 
-
 /**
  * A route.
  * 
@@ -17,30 +16,28 @@ import jakarta.annotation.PostConstruct;
 @Component
 public class MLLPInboundRoute extends BaseRoute {
 	public static final String ROUTE_NAME = "mllp-inbound";
-	
+
 	@Autowired
 	private MllpInboundCommunicationPoint mllpInboundCommunicationPoint;
-	
-	
+
 	@Autowired
 	private ToMLLPOutboundRouteConnector toMllpOutboundRouteConnector;
-		
+
 	public MLLPInboundRoute() {
 		super(ROUTE_NAME);
 	}
-	
-	
+
 	@Override
 	@PostConstruct
 	public void configure() throws Exception {
-		
+
 		// Associate components to the this route.
 		addComponentToRoute(mllpInboundCommunicationPoint);
 		addComponentToRoute(toMllpOutboundRouteConnector);
-		
+
 		// Configure how the components are joined together.
-		addFlow(mllpInboundCommunicationPoint, toMllpOutboundRouteConnector);		
-		
+		addFlow(mllpInboundCommunicationPoint, toMllpOutboundRouteConnector);
+
 		start();
 	}
 }

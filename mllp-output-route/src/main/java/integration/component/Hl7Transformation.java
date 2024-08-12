@@ -14,47 +14,42 @@ import integration.messaging.component.processingstep.transformation.MessageTran
 @Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class Hl7Transformation extends BaseTransformationProcessingStep {
-	
+
 	@Autowired
 	@Qualifier("forwardAllMessages")
 	private MessageForwardingPolicy messageForwardingPolicy;
-	
+
 	@Autowired
 	@Qualifier("acceptAllMessages")
 	private MessageAcceptancePolicy messageAcceptancePolicy;
-	
+
 	@Autowired
 	@Qualifier("changeVersionTo2.5")
 	private MessageTransformer messageTransformer;
-	
+
 	private static final String COMPONENT_NAME = "hl7-transformation";
-	
+
 	public Hl7Transformation() {
 		super(COMPONENT_NAME);
 	}
 
-
 	private static final String CONTENT_TYPE = "HL7";
-	
-	
+
 	@Override
 	public MessageTransformer getTransformer() {
 		return messageTransformer;
 	}
 
-	
 	@Override
 	public String getContentType() {
 		return CONTENT_TYPE;
 	}
 
-	
 	@Override
 	public MessageAcceptancePolicy getMessageAcceptancePolicy() {
 		return messageAcceptancePolicy;
 	}
 
-	
 	@Override
 	public MessageForwardingPolicy getMessageForwardingPolicy() {
 		return messageForwardingPolicy;
