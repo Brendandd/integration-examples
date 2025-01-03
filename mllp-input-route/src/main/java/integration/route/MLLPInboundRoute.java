@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import integration.component.MllpInboundCommunicationPoint;
-import integration.component.ToMLLPOutboundRouteConnector;
+import integration.component.MLLPOutboundRouteConnector;
 import integration.messaging.BaseRoute;
 import jakarta.annotation.PostConstruct;
 
@@ -21,7 +21,7 @@ public class MLLPInboundRoute extends BaseRoute {
     private MllpInboundCommunicationPoint mllpInboundCommunicationPoint;
 
     @Autowired
-    private ToMLLPOutboundRouteConnector toMllpOutboundRouteConnector;
+    private MLLPOutboundRouteConnector toMllpOutboundRouteConnector;
 
     public MLLPInboundRoute() {
         super(ROUTE_NAME);

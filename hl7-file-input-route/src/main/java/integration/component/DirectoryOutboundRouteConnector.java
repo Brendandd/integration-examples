@@ -16,15 +16,15 @@ import integration.messaging.component.processingstep.filter.MessageAcceptancePo
  */
 @Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class ToMLLPOutboundRouteConnector extends BaseRouteOutboundConnector {
+public class DirectoryOutboundRouteConnector extends BaseRouteOutboundConnector {
 
     @Autowired
     @Qualifier("acceptAllMessages")
     private MessageAcceptancePolicy messageAcceptancePolicy;
 
-    private static final String COMPONENT_NAME = "to-MLLP-outbound-route-connector";
+    private static final String COMPONENT_NAME = "directory-outbound-route-connector";
 
-    public ToMLLPOutboundRouteConnector() throws Exception {
+    public DirectoryOutboundRouteConnector() throws Exception {
         super(COMPONENT_NAME);
     }
 
@@ -35,7 +35,7 @@ public class ToMLLPOutboundRouteConnector extends BaseRouteOutboundConnector {
 
     @Override
     public String getName() {
-        return "routeConnector";
+        return "directoryRouteConnector";
     }
 
     @Override

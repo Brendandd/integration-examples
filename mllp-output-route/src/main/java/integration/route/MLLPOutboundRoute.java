@@ -3,12 +3,12 @@ package integration.route;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import integration.component.FromDirectoryInboundRouteConnector;
-import integration.component.FromMLLPInboundRouteConnector;
+import integration.component.DirectoryInboundRouteConnector;
+import integration.component.MLLPInboundRouteConnector;
 import integration.component.Hl7MessageTypeFilter;
-import integration.component.MllpOutboundCommunicationPoint;
 import integration.component.Hl7Splitter;
 import integration.component.Hl7Transformation;
+import integration.component.MllpOutboundCommunicationPoint;
 import integration.messaging.BaseRoute;
 import jakarta.annotation.PostConstruct;
 
@@ -25,10 +25,10 @@ public class MLLPOutboundRoute extends BaseRoute {
     private static final String ROUTE_NAME = "mllp-outbound";
 
     @Autowired
-    private FromMLLPInboundRouteConnector fromMllpInboundRouteConnector;
+    private MLLPInboundRouteConnector fromMllpInboundRouteConnector;
 
     @Autowired
-    private FromDirectoryInboundRouteConnector fromDirectoryInboundRouteConnector;
+    private DirectoryInboundRouteConnector fromDirectoryInboundRouteConnector;
 
     @Autowired
     private Hl7Splitter splitter;

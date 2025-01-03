@@ -10,21 +10,21 @@ import integration.messaging.component.communicationpoint.BaseRouteInboundConnec
 import integration.messaging.component.processingstep.filter.MessageForwardingPolicy;
 
 /**
- * Joins this route to the directory inbound route.
+ * Joins this route to the MLLP inbound route.
  * 
  * @author Brendan Douglas
  * 
  */
 @Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class FromDirectoryInboundRouteConnector extends BaseRouteInboundConnector {
-    private static final String COMPONENT_NAME = "from-directory-inbound-route-connector";
+public class MLLPInboundRouteConnector extends BaseRouteInboundConnector {
+    private static final String COMPONENT_NAME = "MLLP-inbound-route-connector";
 
     @Autowired
     @Qualifier("forwardAllMessages")
     private MessageForwardingPolicy messageForwardingPolicy;
 
-    public FromDirectoryInboundRouteConnector() {
+    public MLLPInboundRouteConnector() {
         super(COMPONENT_NAME);
     }
 
@@ -35,7 +35,7 @@ public class FromDirectoryInboundRouteConnector extends BaseRouteInboundConnecto
 
     @Override
     public String getName() {
-        return "routeConnector";
+        return "mllpRouteConnector";
     }
 
     @Override

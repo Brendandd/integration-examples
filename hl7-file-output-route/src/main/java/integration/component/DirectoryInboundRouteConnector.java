@@ -17,14 +17,14 @@ import integration.messaging.component.processingstep.filter.MessageForwardingPo
  */
 @Component
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class FromDirectoryInboundRouteConnector extends BaseRouteInboundConnector {
-    private static final String COMPONENT_NAME = "from-directory-inbound-route-connector";
+public class DirectoryInboundRouteConnector extends BaseRouteInboundConnector {
+    private static final String COMPONENT_NAME = "directory-inbound-route-connector";
 
     @Autowired
     @Qualifier("forwardAllMessages")
     private MessageForwardingPolicy messageForwardingPolicy;
 
-    public FromDirectoryInboundRouteConnector() {
+    public DirectoryInboundRouteConnector() {
         super(COMPONENT_NAME);
     }
 
@@ -35,7 +35,7 @@ public class FromDirectoryInboundRouteConnector extends BaseRouteInboundConnecto
 
     @Override
     public String getName() {
-        return "routeConnector";
+        return "directoryRouteConnector";
     }
 
     @Override

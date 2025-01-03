@@ -3,7 +3,7 @@ package integration.route;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import integration.component.FromDirectoryInboundRouteConnector;
+import integration.component.DirectoryInboundRouteConnector;
 import integration.component.HL7DirectoryOutboundCommunicationPoint;
 import integration.messaging.BaseRoute;
 import jakarta.annotation.PostConstruct;
@@ -20,7 +20,7 @@ public class DirectoryOutboundRoute extends BaseRoute {
     private static final String ROUTE_NAME = "directory-outbound";
 
     @Autowired
-    private FromDirectoryInboundRouteConnector fromDirectoryInboundRouteConnector;
+    private DirectoryInboundRouteConnector directoryInboundRouteConnector;
 
     @Autowired
     private HL7DirectoryOutboundCommunicationPoint outboundCommunicationPoint;
@@ -34,11 +34,11 @@ public class DirectoryOutboundRoute extends BaseRoute {
     public void configure() throws Exception {
 
         // Associate components to the this route.
-        addComponentToRoute(fromDirectoryInboundRouteConnector);
+        addComponentToRoute(directoryInboundRouteConnector);
         addComponentToRoute(outboundCommunicationPoint);
 
         // Configure how the components are joined together.
-        addFlow(fromDirectoryInboundRouteConnector, outboundCommunicationPoint);
+        addFlow(directoryInboundRouteConnector, outboundCommunicationPoint);
 
         // Start the route
         start();
